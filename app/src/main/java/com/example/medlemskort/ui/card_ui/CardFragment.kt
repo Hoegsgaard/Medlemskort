@@ -1,4 +1,4 @@
-package com.example.medlemskort.ui.notifications
+package com.example.medlemskort.ui.card_ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.medlemskort.R
 
-class NotificationsFragment : Fragment() {
+class CardFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: NotificationsViewModel
+    private lateinit var cardViewModel: CardViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel =
-            ViewModelProviders.of(this).get(NotificationsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_settings, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        notificationsViewModel.text.observe(this, Observer {
+        cardViewModel =
+            ViewModelProviders.of(this).get(CardViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_cardoverview, container, false)
+        val textView: TextView = root.findViewById(R.id.text_home)
+        cardViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root
