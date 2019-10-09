@@ -23,7 +23,7 @@ class navigation : AppCompatActivity() {
                 R.id.navigation_cardOverView, R.id.navigation_settings
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        //setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
 }
