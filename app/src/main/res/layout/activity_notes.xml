@@ -37,7 +37,7 @@
     </androidx.cardview.widget.CardView>
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editTextUsername"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
