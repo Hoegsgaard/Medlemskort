@@ -102,3 +102,5 @@
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>
+
+<!-- https://stackoverflow.com/questions/37075871/can-i-bind-an-error-message-to-a-textinputlayout -->
