@@ -14,5 +14,8 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, navigation::class.java)
             startActivity(intent);
         }
+        val bum = arrayListOf<Int>(2,4,6,4,34,45,45)
+        val dum = bum[20]
+
     }
 }
