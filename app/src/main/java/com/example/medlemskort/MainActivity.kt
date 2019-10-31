@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         loginButton.setOnClickListener() {
             val intent = Intent(this, navigation::class.java)
             startActivity(intent);
-
+//Kan du læse dette daniel?
         }
     }
 }
