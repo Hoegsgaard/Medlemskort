@@ -3,37 +3,74 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/loginFragment">
-
+    app:startDestination="@id/fragment_login">
     <fragment
-        android:id="@+id/navigation_cardOverView"
-        android:name="com.example.medlemskort.ui.card_ui.CardFragment"
-        android:label="@string/title_cardoverview"
-        tools:layout="@layout/fragment_cardoverview" />
-
-    <!--<fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.medlemskort.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />-->
-
-    <fragment
-        android:id="@+id/navigation_settings"
-        android:name="com.example.medlemskort.ui.settings_ui.SettingsFragment"
-        android:label="@string/title_settings"
-        tools:layout="@layout/fragment_settings" />
-    <fragment
-        android:id="@+id/loginFragment"
+        android:id="@+id/fragment_login"
         android:name="com.example.medlemskort.LoginFragment"
-        android:label="LoginFragment"
+        android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_loginFragment_to_navigation_cardOverView"
-            app:destination="@id/navigation_cardOverView" />
+            android:id="@+id/action_fragment_login_to_viewCardsFragment"
+            app:destination="@id/viewCardsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/viewCardFragment"
-        android:name="com.example.medlemskort.ViewCardFragment"
-        android:label="ViewCardFragment"
-        tools:layout="@layout/fragment_viewcard"/>
+        android:id="@+id/viewCardsFragment"
+        android:name="com.example.medlemskort.ViewCardsFragment"
+        android:label="ViewCardsFragment"
+        tools:layout="@layout/fragment_view_cards">
+        <action
+            android:id="@+id/action_viewCardsFragment_to_createCardFragment"
+            app:destination="@id/createCardFragment" />
+        <action
+            android:id="@+id/action_viewCardsFragment_to_viewCardBarcodeFragment"
+            app:destination="@id/viewCardBarcodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createCardFragment"
+        android:name="com.example.medlemskort.CreateCardTemplateFragment"
+        android:label="CreateCardFragment"
+        tools:layout="@layout/fragment_create_card_template">
+        <action
+            android:id="@+id/action_createCardFragment_to_createCardInputFragment"
+            app:destination="@id/createCardInputFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewCardBarcodeFragment"
+        android:name="com.example.medlemskort.ViewCardBarcodeFragment"
+        android:label="ViewCardBarcodeFragment"
+        tools:layout="@layout/fragment_view_card_barcode">
+        <action
+            android:id="@+id/action_viewCardBarcodeFragment_to_viewCardNotesFragment"
+            app:destination="@id/viewCardNotesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewCardNotesFragment"
+        android:name="com.example.medlemskort.ViewCardNotesFragment"
+        android:label="ViewCardNotesFragment"
+        tools:layout="@layout/fragment_view_card_notes">
+        <action
+            android:id="@+id/action_viewCardNotesFragment_to_viewCardBarcodeFragment"
+            app:destination="@id/viewCardBarcodeFragment" />
+        <action
+            android:id="@+id/action_viewCardNotesFragment_to_editNotesFragment"
+            app:destination="@id/editNotesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editNotesFragment"
+        android:name="com.example.medlemskort.EditNotesFragment"
+        android:label="EditNotesFragment"
+        tools:layout="@layout/fragment_edit_notes">
+        <action
+            android:id="@+id/action_editNotesFragment_to_viewCardNotesFragment"
+            app:destination="@id/viewCardNotesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createCardInputFragment"
+        android:name="com.example.medlemskort.CreateCardInputFragment"
+        android:label="CreateCardInputFragment"
+        tools:layout="@layout/fragment_create_card_input">
+        <action
+            android:id="@+id/action_createCardInputFragment_to_viewCardBarcodeFragment"
+            app:destination="@id/viewCardBarcodeFragment" />
+    </fragment>
 </navigation>
