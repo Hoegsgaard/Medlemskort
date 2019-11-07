@@ -9,4 +9,10 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="create_card_input_storename_hint">Store name</string>
+    <string name="create_card_input_cardnumber_hint">Card number</string>
+    <string name="create_card_input_remindertext">Enter the customer number printed on your card</string>
+    <string name="create_card_input_addcardicon_button">Add Card Icon</string>
+    <string name="create_card_input_circle_description">A round circle to indicate the color chosen for the card.</string>
+    <string name="create_card_input_header_description">A big color to indicate the color you have chosen for your card.</string>
 </resources>

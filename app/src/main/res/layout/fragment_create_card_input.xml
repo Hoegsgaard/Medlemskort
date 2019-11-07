@@ -12,9 +12,10 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/header_imageview"
         android:layout_width="0dp"
         android:layout_height="200dp"
+        android:contentDescription="@string/create_card_input_header_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,14 +23,14 @@
         app:srcCompat="?attr/colorPrimary" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/goToViewBarcode_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text='GO TO "ViewCardBarcode" Fragment'
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+        app:layout_constraintTop_toTopOf="@+id/header_imageview" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -40,7 +41,7 @@
         android:layout_marginEnd="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3">
+        app:layout_constraintTop_toBottomOf="@+id/header_imageview">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -48,24 +49,26 @@
             android:paddingBottom="20dp">
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/circle_imageview"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
+                android:contentDescription="@string/create_card_input_circle_description"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/circle" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/store_name_edittext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
+                tools:ignore="Autofill"
                 android:ems="10"
-                android:hint="Store name"
+                android:hint="@string/create_card_input_storename_hint"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -73,19 +76,20 @@
                 app:layout_constraintTop_toBottomOf="@+id/addCard_button" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/card_number_edittext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="28dp"
                 android:layout_marginEnd="24dp"
+                tools:ignore="Autofill"
                 android:ems="10"
-                android:hint="Card number"
-                android:inputType="textPersonName"
+                android:hint="@string/create_card_input_cardnumber_hint"
+                android:inputType="number|textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText" />
+                app:layout_constraintTop_toBottomOf="@+id/store_name_edittext" />
 
             <Button
                 android:id="@+id/addCard_button"
@@ -94,20 +98,21 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
-                android:text="Add card icon"
+                android:text="@string/create_card_input_addcardicon_button"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView4"
+                app:layout_constraintStart_toEndOf="@+id/circle_imageview"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/remindertext_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="3dp"
-                android:text="Enter the customer number printed of your card"
-                android:textSize="8sp"
-                app:layout_constraintStart_toStartOf="@+id/editText2"
-                app:layout_constraintTop_toBottomOf="@+id/editText2" />
+                android:paddingEnd="3dp"
+                android:text="@string/create_card_input_remindertext"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/card_number_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/card_number_edittext" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
