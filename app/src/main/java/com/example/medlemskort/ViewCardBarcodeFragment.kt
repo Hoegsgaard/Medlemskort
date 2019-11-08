@@ -20,7 +20,7 @@ class ViewCardBarcodeFragment : Fragment() {
             inflater, R.layout.fragment_view_card_barcode, container, false
         )
 
-        binding.button5.setOnClickListener { view: View ->
+        binding.NotesButton.setOnClickListener { view: View ->
             Navigation.findNavController(view)
                 .navigate(R.id.action_fragment_view_card_barcode_to_fragment_view_card_notes)
         }

@@ -7,7 +7,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_view_cards_fragment">Hello from ViewCards Fragment</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- create_card_input string resources -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="create_card_input_storename_hint">Store name</string>
     <string name="create_card_input_cardnumber_hint">Card number</string>
