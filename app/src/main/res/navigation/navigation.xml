@@ -41,7 +41,9 @@
         tools:layout="@layout/fragment_view_card_barcode">
         <action
             android:id="@+id/action_fragment_view_card_barcode_to_fragment_view_card_notes"
-            app:destination="@id/fragment_view_card_notes" />
+            app:destination="@id/fragment_view_card_notes"
+            app:popUpTo="@+id/fragment_view_cards"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/fragment_view_card_notes"
@@ -51,7 +53,8 @@
         <action
             android:id="@+id/action_fragment_view_card_notes_to_fragment_view_card_barcode"
             app:destination="@id/fragment_view_card_barcode"
-            app:popUpTo="@+id/fragment_view_card_barcode" />
+            app:popUpTo="@+id/fragment_view_card_barcode"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_fragment_view_card_notes_to_fragment_edit_notes"
             app:destination="@id/fragment_edit_notes" />

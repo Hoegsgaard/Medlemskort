@@ -22,18 +22,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/colorPrimary" />
 
-    <Button
-        android:id="@+id/goToViewBarcode_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text='GO TO "ViewCardBarcode" Fragment'
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/header_imageview" />
-
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/cardViewNotes"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"

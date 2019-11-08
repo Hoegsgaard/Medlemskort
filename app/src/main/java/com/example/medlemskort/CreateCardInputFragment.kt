@@ -21,11 +21,6 @@ class CreateCardInputFragment : Fragment() {
             inflater, R.layout.fragment_create_card_input, container, false
         )
 
-        binding.goToViewBarcodeButton.setOnClickListener { view: View ->
-            Navigation.findNavController(view)
-                .navigate(R.id.action_fragment_create_card_input_to_fragment_view_card_barcode)
-        }
-
         /*
         Create card and navigate to View Barcode Fragment
          */
