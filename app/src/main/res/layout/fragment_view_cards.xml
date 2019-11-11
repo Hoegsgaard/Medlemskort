@@ -12,35 +12,84 @@
 
         <!-- TODO: Update blank fragment layout -->
 
-        <TextView
-            android:id="@+id/textView6"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/newCard_floatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="160dp"
-            android:text="Hello from ViewCardsFragment"
+            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="100dp"
+            android:clickable="true"
+            android:tint="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:srcCompat="@drawable/baseline_add_24" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="136dp"
-            android:text='Go to "VIEW CARD BARCODE FRAGMENT"'
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="108dp"
-            android:text='GO TO "CREATE CARD" FRAGMENT'
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button2" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="5dp">
+
+                    <ImageView
+                        android:id="@+id/card1_imageview"
+                        android:layout_width="205dp"
+                        android:layout_height="200dp"
+                        android:layout_weight="1"
+                        android:paddingEnd="5dp"
+                        app:srcCompat="@color/colorAccentLight" />
+
+                    <ImageView
+                        android:id="@+id/card2_imageview"
+                        android:layout_width="205dp"
+                        android:layout_height="200dp"
+                        android:layout_weight="1"
+                        android:paddingStart="5dp"
+                        app:srcCompat="@color/colorPrimaryDark" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="5dp">
+
+                    <ImageView
+                        android:id="@+id/card3_imageview"
+                        android:layout_width="205dp"
+                        android:layout_height="200dp"
+                        android:layout_weight="1"
+                        android:paddingEnd="5dp"
+                        app:srcCompat="@color/colorAccent" />
+
+                    <ImageView
+                        android:id="@+id/card4_imageview"
+                        android:layout_width="205dp"
+                        android:layout_height="200dp"
+                        android:layout_weight="1"
+                        android:paddingStart="5dp"
+                        app:srcCompat="@color/colorPrimaryDark" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
