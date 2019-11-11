@@ -21,7 +21,19 @@ class EditNotesFragment : Fragment() {
             inflater, R.layout.fragment_edit_notes, container, false
         )
 
-        binding.button8.setOnClickListener { view: View ->
+        binding.cancelImageview.setOnClickListener { view: View ->
+            Navigation.findNavController(view)
+                .navigate(R.id.action_fragment_edit_notes_to_fragment_view_card_notes)
+        }
+        binding.cancelTextview.setOnClickListener { view: View ->
+            Navigation.findNavController(view)
+                .navigate(R.id.action_fragment_edit_notes_to_fragment_view_card_notes)
+        }
+        binding.acceptImageview.setOnClickListener { view: View ->
+            Navigation.findNavController(view)
+                .navigate(R.id.action_fragment_edit_notes_to_fragment_view_card_notes)
+        }
+        binding.acceptTextview.setOnClickListener { view: View ->
             Navigation.findNavController(view)
                 .navigate(R.id.action_fragment_edit_notes_to_fragment_view_card_notes)
         }
