@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
@@ -26,13 +27,24 @@ class ViewCardsFragment : Fragment() {
         )
         generateOnClickListeners()
 
+        setupDatabase()
+
+        return binding.root
+    }
+
+    private fun setupDatabase() {
         database = FirebaseDatabase.getInstance().getReference("cards")
+
 
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                for (postSnapshot in dataSnapshot.children)
-                {
-                    Log.d("NewCard" , postSnapshot.getValue(Card::class.java)?.cardname + postSnapshot.getValue(Card::class.java)?.cardnumber)
+                for (postSnapshot in dataSnapshot.children) {
+                    Log.d(
+                        "NewCard",
+                        postSnapshot.getValue(Card::class.java)?.cardname + postSnapshot.getValue(
+                            Card::class.java
+                        )?.cardnumber
+                    )
                 }
             }
 
@@ -41,8 +53,6 @@ class ViewCardsFragment : Fragment() {
             }
         }
         database.addValueEventListener(postListener)
-
-        return binding.root
     }
 
     private fun generateOnClickListeners()
@@ -71,6 +81,22 @@ class ViewCardsFragment : Fragment() {
             Navigation.findNavController(view)
                 .navigate(R.id.action_fragment_view_cards_to_fragment_create_card_template)
         }
+    }
+
+    fun createCardsUI(cards : List<Card>)
+    {
+        //TODO Create the correct ImageView View and inflate it to the layout
+        // Repeat this process for all cards in the database
+        // Should be called when receiving data in the OnDataChange function of PostListener
+        val layout = binding.linearLayoutMain
+        val imageView = layoutInflater.inflate(R.layout.card, layout, false)
+        imageView.setOnClickListener {
+                view: View ->
+            Navigation.findNavController(view)
+                .navigate(R.id.action_fragment_view_cards_to_fragment_view_card_barcode)
+        }
+
+        layout.addView(imageView)
     }
 
 
