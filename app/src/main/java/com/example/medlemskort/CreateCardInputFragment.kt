@@ -38,6 +38,11 @@ class CreateCardInputFragment : Fragment() {
             Navigation.findNavController(view)
                 .navigate(CreateCardInputFragmentDirections.actionFragmentCreateCardInputToFragmentViewCardBarcode())
         }
+
+        binding.storeNameEdittext.setText(CreateCardInputFragmentArgs.fromBundle(arguments!!).storeName)
+        //binding.headerImageview.setImageResource("COLOR / LOGO") //TODO Set this to the correct logo from CreateCardTemplateFragment
+        //binding.circleImageview.setImageResource("LOGO") //TODO Set this to the correct logo from CreateCardTemplateFragment
+
         return binding.root
     }
 

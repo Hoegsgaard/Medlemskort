@@ -79,5 +79,8 @@
             android:id="@+id/action_fragment_create_card_input_to_fragment_view_card_barcode"
             app:destination="@id/fragment_view_card_barcode"
             app:popUpTo="@+id/fragment_view_cards" />
+        <argument
+          android:name="storeName"
+          app:argType="string" />
     </fragment>
 </navigation>

@@ -39,7 +39,7 @@ class CreateCardTemplateFragment : Fragment() {
         return binding.root
     }
 
-    fun addBrandCards(){
+    private fun addBrandCards(){
         for (brand in brands) {
             val cardView = layoutInflater.inflate(R.layout.brand_card, null, false)
             val space = layoutInflater.inflate(R.layout.spacer,null,false)
@@ -48,8 +48,10 @@ class CreateCardTemplateFragment : Fragment() {
             cardView.brandLogo.setImageResource(brandImg)
             cardView.setOnClickListener{ view: View ->
                     Navigation.findNavController(view)
-                    .navigate(R.id.action_fragment_create_card_template_to_fragment_create_card_input)
+                    //.navigate(R.id.action_fragment_create_card_template_to_fragment_create_card_input)
+                    .navigate(CreateCardTemplateFragmentDirections.actionFragmentCreateCardTemplateToFragmentCreateCardInput(brand))
             }
+
             mainLinearLayout!!.addView(cardView)
             mainLinearLayout!!.addView(space)
         }
