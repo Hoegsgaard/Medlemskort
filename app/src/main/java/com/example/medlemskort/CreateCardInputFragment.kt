@@ -11,7 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.example.medlemskort.databinding.FragmentCreateCardInputBinding
 import com.google.firebase.database.FirebaseDatabase
-
+import kotlinx.android.synthetic.main.brand_card.*
 
 
 /**
@@ -39,9 +39,12 @@ class CreateCardInputFragment : Fragment() {
                 .navigate(CreateCardInputFragmentDirections.actionFragmentCreateCardInputToFragmentViewCardBarcode())
         }
 
-        binding.storeNameEdittext.setText(CreateCardInputFragmentArgs.fromBundle(arguments!!).storeName)
-        //binding.headerImageview.setImageResource("COLOR / LOGO") //TODO Set this to the correct logo from CreateCardTemplateFragment
-        //binding.circleImageview.setImageResource("LOGO") //TODO Set this to the correct logo from CreateCardTemplateFragment
+        val brand = CreateCardInputFragmentArgs.fromBundle(arguments!!).storeName
+        val logo = getLogoByBrand(brand)
+
+        binding.storeNameEdittext.setText(brand)
+        binding.headerImageview.setImageResource(logo) //TODO Set this to the correct logo from CreateCardTemplateFragment
+        binding.circleImageview.setImageResource(logo) //TODO Set this to the correct logo from CreateCardTemplateFragment
 
         return binding.root
     }
@@ -54,6 +57,16 @@ class CreateCardInputFragment : Fragment() {
         val cardRef = database.getReference("cards")
         val newCard = Card(binding.storeNameEdittext.text.toString(), binding.cardNumberEdittext.text.toString().toLong())
         cardRef.child(binding.storeNameEdittext.text.toString()).setValue(newCard)
+    }
+
+    fun getLogoByBrand(brand:String): Int {
+        return when (brand) {
+            "Matas" -> R.drawable.matas_logo
+            "Ikea" ->  R.drawable.ikea_logo
+            "Bauhaus" -> R.drawable.bauhaus_logo
+            "Sportmaster"-> R.drawable.sportmaster_logo
+            else -> R.drawable.ic_settings
+        }
     }
 
 
