@@ -42,6 +42,43 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592466004788:android:6deda0e9a302b364fab361",
+        "android_client_info": {
+          "package_name": "dk.hoegsgaard.medlemskort"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "592466004788-fl5fg8043hofbfkuv78v5f11p0k1b3q5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dk.hoegsgaard.medlemskort",
+            "certificate_hash": "3809f6a3dc7ac49dd475e4c29d37681f3a0a815e"
+          }
+        },
+        {
+          "client_id": "592466004788-6f3e67c1gseb29h3qd3fisse6r1fcvtb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdBBWp6LuzePXepEug0aYosxvZMMiKaj0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "592466004788-6f3e67c1gseb29h3qd3fisse6r1fcvtb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

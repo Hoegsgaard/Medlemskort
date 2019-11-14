@@ -3,32 +3,52 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/frameLayout2"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CreateCardTemplateFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:text="Create Card Fragment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/frameLayout2"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      tools:context=".CreateCardTemplateFragment">
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
-        android:text='GO TO "CreateCardInput" Fragment'
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        <ImageView
+          android:id="@+id/imageView3"
+          android:layout_width="47dp"
+          android:layout_height="38dp"
+          app:layout_constraintBottom_toBottomOf="@+id/editText"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:srcCompat="@android:drawable/ic_search_category_default" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+          android:id="@+id/editText"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="1dp"
+          android:ems="10"
+          android:hint="Søg her"
+          android:inputType="textPersonName"
+          app:layout_constraintBottom_toTopOf="@+id/mainScrollView"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+          android:id="@+id/mainScrollView"
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          android:layout_marginStart="1dp"
+          android:layout_marginEnd="1dp"
+          android:layout_marginBottom="1dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/editText">
+
+            <LinearLayout
+              android:id="@+id/mainLinearLayout"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical" />
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.example.medlemskort.databinding.FragmentCreateCardInputBinding
@@ -26,6 +27,12 @@ class CreateCardInputFragment : Fragment() {
             inflater, R.layout.fragment_create_card_input, container, false
         )
 
+        /*
+        Create card and navigate to View Barcode Fragment
+         */
+        binding.scanImageView.setOnClickListener{
+            Toast.makeText(requireContext(),"Funktion under udvikling", Toast.LENGTH_LONG).show()
+        }
         binding.addCardButton.setOnClickListener { view: View ->
             addCardToDatabase()
             Navigation.findNavController(view)
