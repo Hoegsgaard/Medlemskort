@@ -31,8 +31,8 @@
         android:label="CreateCardFragment"
         tools:layout="@layout/fragment_create_card_template">
         <action
-            android:id="@+id/action_fragment_create_card_template_to_fragment_create_card_input"
-            app:destination="@id/fragment_create_card_input" />
+          android:id="@+id/action_fragment_create_card_template_to_fragment_create_card_input"
+          app:destination="@id/fragment_create_card_input" />
     </fragment>
     <fragment
         android:id="@+id/fragment_view_card_barcode"
