@@ -33,6 +33,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
+                android:id="@+id/linearLayoutMain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -87,6 +88,7 @@
                         android:layout_weight="1"
                         android:paddingStart="5dp"
                         app:srcCompat="@color/colorPrimaryDark" />
+
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
