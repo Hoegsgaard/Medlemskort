@@ -27,6 +27,9 @@ class LoginFragment : Fragment() {
                 .navigate(R.id.action_fragment_login_to_fragment_view_cards)
         }
         return binding.root
+
+        //TODO Make it possible to Login with the userdata stored in the Firebase Database
+        //TODO Make a screen for making a new user
     }
 
 }

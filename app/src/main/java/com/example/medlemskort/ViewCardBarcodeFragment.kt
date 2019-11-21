@@ -25,6 +25,10 @@ class ViewCardBarcodeFragment : Fragment() {
                 .navigate(R.id.action_fragment_view_card_barcode_to_fragment_view_card_notes)
         }
         return binding.root
+
+
+        //TODO Set the Header text to the name of the Card
+        //TODO Set the Barcode image and Barcode Text to be the data from the Card chosen
     }
 
 

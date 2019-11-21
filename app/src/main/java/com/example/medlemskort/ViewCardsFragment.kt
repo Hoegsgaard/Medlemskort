@@ -18,6 +18,7 @@ import com.google.firebase.database.*
  * A simple [Fragment] subclass.
  */
 class ViewCardsFragment : Fragment() {
+    //TODO Show a loading animation when data is loading to show the user the app is not ready yet
     lateinit var binding: FragmentViewCardsBinding
     private lateinit var database: DatabaseReference
 

@@ -39,6 +39,15 @@ class ViewCardNotesFragment : Fragment() {
 
         }
         return binding.root
+
+        //TODO Pull the Note of a card from the backend or cache and display it in the Note text box.
+        //TODO Put an OnClickListener on 'Notes' button 'Edit' button and 'NotesText' button so they all navigate to the EditNotesFragment
+
+        //TODO Step 1. Show a toast when you click either of the two cameras and tell the user the feature isn't made yet
+        //TODO Step 2. Ask for permission to use Camera Roll or Camera
+        //TODO Step 3. Use the image provided by the user, upload it to the database storage and show a preview in the app
+        //TODO Step 4. If the user has a picture chosen make sure that when you click it a full scren view of the picture is shown with an option to edit or delete it
+
     }
 
 }

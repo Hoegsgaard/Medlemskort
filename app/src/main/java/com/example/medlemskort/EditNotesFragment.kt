@@ -32,10 +32,12 @@ class EditNotesFragment : Fragment() {
         binding.acceptImageview.setOnClickListener { view: View ->
             Navigation.findNavController(view)
                 .navigate(R.id.action_fragment_edit_notes_to_fragment_view_card_notes)
+            //TODO Update the cards notes if you click on the 'Done' button both locally and remotely (In the database)
         }
         binding.acceptTextview.setOnClickListener { view: View ->
             Navigation.findNavController(view)
                 .navigate(R.id.action_fragment_edit_notes_to_fragment_view_card_notes)
+            //TODO Update the cards notes if you click on the 'Done' button both locally and remotely (In the database)
         }
         return binding.root
     }
