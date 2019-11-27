@@ -1,12 +1,14 @@
 package com.example.medlemskort
 
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
@@ -80,6 +82,10 @@ class ViewCardsFragment : Fragment() {
         for(i in 0 .. cards.size)
         {
             val textView = TextView(context)
+            val layoutParams =
+                LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200)
+            textView.layoutParams = layoutParams
+            textView.setBackgroundColor(Color.GREEN)
             textView.setOnClickListener {
                     view: View ->
                 Navigation.findNavController(view)
