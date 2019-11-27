@@ -44,25 +44,25 @@ class CreateCardTemplateFragment : Fragment() {
             val cardView = layoutInflater.inflate(R.layout.brand_card, null, false)
             val space = layoutInflater.inflate(R.layout.spacer,null,false)
             val brandImg = img(brand)
-            cardView.brandName.setText(brand)
+            cardView.brandName.text = brand
             cardView.brandLogo.setImageResource(brandImg)
             cardView.setOnClickListener{ view: View ->
                     Navigation.findNavController(view)
                     //.navigate(R.id.action_fragment_create_card_template_to_fragment_create_card_input)
-                    .navigate(CreateCardTemplateFragmentDirections.actionFragmentCreateCardTemplateToFragmentCreateCardInput(brand))
+                    .navigate(CreateCardTemplateFragmentDirections.actionFragmentCreateCardTemplateToFragmentCreateCardInput(brand , brand))
             }
 
-            mainLinearLayout!!.addView(cardView)
-            mainLinearLayout!!.addView(space)
+            mainLinearLayout.addView(cardView)
+            mainLinearLayout.addView(space)
         }
     }
-    fun img(brand:String): Int {
-        when (brand) {
-            "Matas" -> return R.drawable.matas_logo
-            "Ikea" -> return R.drawable.ikea_logo
-            "Bauhaus" -> return R.drawable.bauhaus_logo
-            "Sportmaster"-> return R.drawable.sportmaster_logo
-            else -> return R.drawable.ic_settings
+    private fun img(brand:String): Int {
+        return when (brand) {
+            "Matas" ->  R.drawable.matas_logo
+            "Ikea" ->  R.drawable.ikea_logo
+            "Bauhaus" ->  R.drawable.bauhaus_logo
+            "Sportmaster"->  R.drawable.sportmaster_logo
+            else ->  R.drawable.ic_settings
         }
     }
 }

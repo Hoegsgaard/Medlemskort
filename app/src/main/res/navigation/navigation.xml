@@ -80,7 +80,10 @@
             app:destination="@id/fragment_view_card_barcode"
             app:popUpTo="@+id/fragment_view_cards" />
         <argument
-          android:name="storeName"
+          android:name="brandname"
+          app:argType="string" />
+        <argument
+          android:name="cardname"
           app:argType="string" />
     </fragment>
 </navigation>

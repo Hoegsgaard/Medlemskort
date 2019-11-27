@@ -25,72 +25,14 @@
           app:srcCompat="@drawable/baseline_add_24" />
 
         <ScrollView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
 
             <LinearLayout
-                android:id="@+id/linearLayoutMain"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingStart="5dp"
-                    android:paddingTop="5dp"
-                    android:paddingEnd="5dp"
-                    android:paddingBottom="5dp">
-
-                    <ImageView
-                        android:id="@+id/card1_imageview"
-                        android:layout_width="205dp"
-                        android:layout_height="200dp"
-                        android:layout_weight="1"
-                        android:paddingEnd="5dp"
-                        app:srcCompat="@color/colorAccentLight" />
-
-                    <ImageView
-                        android:id="@+id/card2_imageview"
-                        android:layout_width="205dp"
-                        android:layout_height="200dp"
-                        android:layout_weight="1"
-                        android:paddingStart="5dp"
-                        app:srcCompat="@color/colorPrimaryDark" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingLeft="5dp"
-                    android:paddingTop="5dp"
-                    android:paddingEnd="5dp"
-                    android:paddingBottom="5dp">
-
-                    <ImageView
-                        android:id="@+id/card3_imageview"
-                        android:layout_width="205dp"
-                        android:layout_height="200dp"
-                        android:layout_weight="1"
-                        android:paddingEnd="5dp"
-                        app:srcCompat="@color/colorAccent" />
-
-                    <ImageView
-                        android:id="@+id/card4_imageview"
-                        android:layout_width="205dp"
-                        android:layout_height="200dp"
-                        android:layout_weight="1"
-                        android:paddingStart="5dp"
-                        app:srcCompat="@color/colorPrimaryDark" />
-
-                </LinearLayout>
-            </LinearLayout>
+              android:id="@+id/linearlayout"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical" />
         </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

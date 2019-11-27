@@ -39,12 +39,13 @@ class CreateCardInputFragment : Fragment() {
                 .navigate(CreateCardInputFragmentDirections.actionFragmentCreateCardInputToFragmentViewCardBarcode())
         }
 
-        val brand = CreateCardInputFragmentArgs.fromBundle(arguments!!).storeName
+        val brand = CreateCardInputFragmentArgs.fromBundle(arguments!!).brandname
+        val cardname = CreateCardInputFragmentArgs.fromBundle(arguments!!).cardname
         val logo = getLogoByBrand(brand)
 
-        binding.storeNameEdittext.setText(brand)
-        binding.headerImageview.setImageResource(logo) //TODO Set this to the correct logo from CreateCardTemplateFragment
-        binding.circleImageview.setImageResource(logo) //TODO Set this to the correct logo from CreateCardTemplateFragment
+        binding.storeNameEdittext.setText(cardname)
+        binding.headerImageview.setImageResource(logo)
+        binding.circleImageview.setImageResource(logo)
 
         return binding.root
     }

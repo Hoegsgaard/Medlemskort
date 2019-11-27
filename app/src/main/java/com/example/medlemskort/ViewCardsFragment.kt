@@ -7,8 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.example.medlemskort.databinding.FragmentViewCardsBinding
@@ -26,9 +25,17 @@ class ViewCardsFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_view_cards, container, false
         )
+
         generateOnClickListeners()
 
         setupDatabase()
+        val card1 = Card()
+        val card2 = Card()
+        val card3 = Card()
+        val card4 = Card()
+
+        val list = listOf(card1 , card2 , card3 , card4)
+        createCardsUI(list)
 
         return binding.root
     }
@@ -58,26 +65,6 @@ class ViewCardsFragment : Fragment() {
 
     private fun generateOnClickListeners()
     {
-        binding.card1Imageview.setOnClickListener { view: View ->
-            Navigation.findNavController(view)
-                .navigate(R.id.action_fragment_view_cards_to_fragment_view_card_barcode)
-        }
-
-        binding.card2Imageview.setOnClickListener { view: View ->
-            Navigation.findNavController(view)
-                .navigate(R.id.action_fragment_view_cards_to_fragment_view_card_barcode)
-        }
-
-        binding.card3Imageview.setOnClickListener { view: View ->
-            Navigation.findNavController(view)
-                .navigate(R.id.action_fragment_view_cards_to_fragment_view_card_barcode)
-        }
-
-        binding.card4Imageview.setOnClickListener { view: View ->
-            Navigation.findNavController(view)
-                .navigate(R.id.action_fragment_view_cards_to_fragment_view_card_barcode)
-        }
-
         binding.newCardFloatingActionButton.setOnClickListener { view: View ->
             Navigation.findNavController(view)
                 .navigate(R.id.action_fragment_view_cards_to_fragment_create_card_template)
@@ -89,15 +76,18 @@ class ViewCardsFragment : Fragment() {
         //TODO Create the correct ImageView View and inflate it to the layout
         // Repeat this process for all cards in the database
         // Should be called when receiving data in the OnDataChange function of PostListener
-        val layout = binding.linearLayoutMain
-        val imageView = layoutInflater.inflate(R.layout.card, layout, false)
-        imageView.setOnClickListener {
-                view: View ->
-            Navigation.findNavController(view)
-                .navigate(R.id.action_fragment_view_cards_to_fragment_view_card_barcode)
+        val layout = binding.linearlayout
+        for(i in 0 .. cards.size)
+        {
+            val textView = TextView(context)
+            textView.setOnClickListener {
+                    view: View ->
+                Navigation.findNavController(view)
+                    .navigate(R.id.action_fragment_view_cards_to_fragment_view_card_barcode)
+            }
+            layout.addView(textView)
+            textView.text = "Card number " + i
         }
-
-        layout.addView(imageView)
     }
 
 
