@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.example.medlemskort.databinding.FragmentCreateCardInputBinding
@@ -38,14 +39,29 @@ class CreateCardInputFragment : Fragment() {
             Navigation.findNavController(view)
                 .navigate(CreateCardInputFragmentDirections.actionFragmentCreateCardInputToFragmentViewCardBarcode())
         }
+        binding.addCardButton.isEnabled = false
+        binding.addCardButton.isClickable = false
 
-        val brand = CreateCardInputFragmentArgs.fromBundle(arguments!!).brandname
-        val cardname = CreateCardInputFragmentArgs.fromBundle(arguments!!).cardname
+        val brand = CreateCardInputFragmentArgs.fromBundle(arguments!!).cardname
+        val cardname = CreateCardInputFragmentArgs.fromBundle(arguments!!).brand
         val logo = getLogoByBrand(brand)
 
         binding.storeNameEdittext.setText(cardname)
         binding.headerImageview.setImageResource(logo)
         binding.circleImageview.setImageResource(logo)
+        binding.cardNumberEdittext.doOnTextChanged { text, start, count, after ->
+            if(text!!.isNotEmpty())
+            {
+                binding.addCardButton.isEnabled = true
+                binding.addCardButton.isClickable = true
+            }
+            else
+            {
+                binding.addCardButton.isEnabled = false
+                binding.addCardButton.isClickable = false
+            }
+
+        }
 
         return binding.root
     }

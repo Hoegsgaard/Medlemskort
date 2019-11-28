@@ -1,21 +1,16 @@
 package com.example.medlemskort
 
 
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.ScrollView
-import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.example.medlemskort.databinding.FragmentCreateCardTemplateBinding
 import kotlinx.android.synthetic.main.brand_card.view.*
-import kotlinx.android.synthetic.main.fragment_create_card_template.*
 import kotlinx.android.synthetic.main.fragment_create_card_template.view.*
 
 /**
