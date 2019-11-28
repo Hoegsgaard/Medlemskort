@@ -24,6 +24,7 @@ import android.view.Gravity
 class ViewCardsFragment : Fragment() {
     //TODO Show a loading animation when data is loading to show the user the app is not ready yet
     lateinit var binding: FragmentViewCardsBinding
+    lateinit var list : MutableList<Card>
     private lateinit var database: DatabaseReference
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
@@ -34,13 +35,13 @@ class ViewCardsFragment : Fragment() {
         generateOnClickListeners()
 
         setupDatabase()
-        val card1 = Card("Bauhaus" , brand = "Bauhaus")
-        val card2 = Card("Ikea" , brand = "Ikea")
-        val card3 = Card("Matas" , brand = "Matas")
-        val card4 = Card("Sportmaster" , brand = "Sportmaster")
+//        val card1 = Card("Bauhaus" , brand = "Bauhaus")
+//        val card2 = Card("Ikea" , brand = "Ikea")
+//        val card3 = Card("Matas" , brand = "Matas")
+//        val card4 = Card("Sportmaster" , brand = "Sportmaster")
+//
+         list = mutableListOf()
 
-        val list = listOf(card1 , card2 , card3 , card4)
-        createCardsUI(list)
 
         return binding.root
     }
@@ -52,13 +53,17 @@ class ViewCardsFragment : Fragment() {
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (postSnapshot in dataSnapshot.children) {
+                    val newCard = postSnapshot.getValue(Card::class.java)
                     Log.d(
                         "NewCard",
                         postSnapshot.getValue(Card::class.java)?.cardname + postSnapshot.getValue(
                             Card::class.java
                         )?.cardnumber
                     )
+                    list.add(newCard!!)
+
                 }
+                createCardsUI(list)
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -95,7 +100,7 @@ class ViewCardsFragment : Fragment() {
                     view: View ->
                 Log.d("hey",cards[i].cardname + " | " +cards[i].brand)
                 Navigation.findNavController(view)
-                    .navigate(ViewCardsFragmentDirections.actionFragmentViewCardsToFragmentViewCardBarcode(cards[i].cardname , cards[i].brand))
+                    .navigate(ViewCardsFragmentDirections.actionFragmentViewCardsToFragmentViewCardBarcode(cards[i].cardname , cards[i].brand , cards[i].cardnumber))
                     //.navigate(R.id.action_fragment_view_cards_to_fragment_view_card_barcode)
             }
             layout.addView(textView)

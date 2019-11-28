@@ -14,14 +14,13 @@ import com.example.medlemskort.databinding.FragmentCreateCardInputBinding
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.brand_card.*
 import kotlinx.android.synthetic.main.card.*
+import kotlinx.android.synthetic.main.fragment_create_card_input.*
 
 
 /**
  * A simple [Fragment] subclass.
  */
 class CreateCardInputFragment : Fragment() {
-    private lateinit var brand : String
-    private lateinit var cardname : String
 
 
     lateinit var binding: FragmentCreateCardInputBinding
@@ -32,8 +31,8 @@ class CreateCardInputFragment : Fragment() {
             inflater, R.layout.fragment_create_card_input, container, false
         )
 
-        brand = CreateCardInputFragmentArgs.fromBundle(arguments!!).brand
-        cardname = CreateCardInputFragmentArgs.fromBundle(arguments!!).cardname
+        val brand = CreateCardInputFragmentArgs.fromBundle(arguments!!).brand
+        val cardname = CreateCardInputFragmentArgs.fromBundle(arguments!!).cardname
         val logo = getLogoByBrand(brand)
         /*
         Create card and navigate to View Barcode Fragment
@@ -43,8 +42,10 @@ class CreateCardInputFragment : Fragment() {
         }
         binding.addCardButton.setOnClickListener { view: View ->
             addCardToDatabase()
+            val cardnumber = card_number_edittext.text.toString().toLong()
             Navigation.findNavController(view)
-                .navigate(CreateCardInputFragmentDirections.actionFragmentCreateCardInputToFragmentViewCardBarcode(cardname,brand))
+
+                .navigate(CreateCardInputFragmentDirections.actionFragmentCreateCardInputToFragmentViewCardBarcode(cardname , brand , cardnumber))
         }
         binding.addCardButton.isEnabled = false
         binding.addCardButton.isClickable = false

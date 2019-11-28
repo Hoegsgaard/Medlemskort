@@ -50,6 +50,9 @@
         <argument
           android:name="brandName"
           app:argType="string" />
+        <argument
+          android:name="cardNumber"
+          app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/fragment_view_card_notes"

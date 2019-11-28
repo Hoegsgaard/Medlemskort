@@ -16,6 +16,8 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.common.BitMatrix
 import com.journeyapps.barcodescanner.BarcodeEncoder
+import kotlinx.android.synthetic.main.brand_card.view.*
+import kotlinx.android.synthetic.main.fragment_create_card_input.*
 import kotlinx.android.synthetic.main.fragment_view_card_barcode.*
 import java.lang.Exception
 
@@ -25,16 +27,27 @@ import java.lang.Exception
 class ViewCardBarcodeFragment : Fragment() {
     private lateinit var medNum:String
     private lateinit var database: DatabaseReference
-    private lateinit var brand : String
-    private lateinit var cardname : String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         val binding: FragmentViewCardBarcodeBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_view_card_barcode, container, false
         )
 
-        brand = ViewCardBarcodeFragmentArgs.fromBundle(arguments!!).brandName
-        cardname = ViewCardBarcodeFragmentArgs.fromBundle(arguments!!).cardName
+        val brand = ViewCardBarcodeFragmentArgs.fromBundle(arguments!!).brandName
+        val cardname = ViewCardBarcodeFragmentArgs.fromBundle(arguments!!).cardName
+        val cardnumber = ViewCardBarcodeFragmentArgs.fromBundle(arguments!!).cardNumber
+
+
+        if(img(brand) == R.drawable.ic_settings)
+        {
+            binding.headerImageview.text = cardname
+        }
+        else
+        {
+            binding.headerImageview.setBackgroundResource(img(brand))
+            binding.headerImageview.text = ""
+        }
+        binding.medlemsNummerTextView.text = cardnumber.toString()
 
 
         binding.NotesButton.setOnClickListener { view: View ->
@@ -42,7 +55,7 @@ class ViewCardBarcodeFragment : Fragment() {
                 .navigate(R.id.action_fragment_view_card_barcode_to_fragment_view_card_notes)
         }
 
-        medNum = getMedNumFromDatabase()
+        medNum = getMedNumFromDatabase(cardname)
         try {
             val multiFormatWriter = MultiFormatWriter()
             val bitMatrix = multiFormatWriter.encode(medNum, BarcodeFormat.CODABAR, 800, 400)
@@ -60,7 +73,7 @@ class ViewCardBarcodeFragment : Fragment() {
         //TODO Set the Barcode image and Barcode Text to be the data from the Card chosen
     }
 
-    private fun getMedNumFromDatabase(): String {
+    private fun getMedNumFromDatabase(cardname: String): String {
         database = FirebaseDatabase.getInstance().getReference("cards/${cardname}")
 
         val postListener = object : ValueEventListener {
@@ -69,8 +82,7 @@ class ViewCardBarcodeFragment : Fragment() {
                 val newcard = dataSnapshot.getValue(Card::class.java)
                 Log.d("CardValues" , newcard?.cardname.toString())
                 Log.d("CardValues" , newcard?.cardnumber.toString())
-                medlemsNummer_textView.text = newcard?.cardnumber.toString()
-                header_imageview.text = newcard?.cardname
+
 
             }
 
@@ -82,6 +94,16 @@ class ViewCardBarcodeFragment : Fragment() {
 
 
         return "1234"
+    }
+
+    private fun img(brand:String): Int {
+        return when (brand) {
+            "Matas" ->  R.drawable.matas_logo
+            "Ikea" ->  R.drawable.ikea_logo
+            "Bauhaus" ->  R.drawable.bauhaus_logo
+            "Sportmaster"->  R.drawable.sportmaster_logo
+            else ->  R.drawable.ic_settings
+        }
     }
 
 
