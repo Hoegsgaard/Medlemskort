@@ -35,9 +35,9 @@ class ViewCardsFragment : Fragment() {
 
         setupDatabase()
         val card1 = Card("Bauhaus" , brand = "Bauhaus")
-        val card2 = Card("Bauhaus" , brand = "Bauhaus")
-        val card3 = Card("Bauhaus" , brand = "Bauhaus")
-        val card4 = Card("Bauhaus" , brand = "Bauhaus")
+        val card2 = Card("Ikea" , brand = "Ikea")
+        val card3 = Card("Matas" , brand = "Matas")
+        val card4 = Card("Sportmaster" , brand = "Sportmaster")
 
         val list = listOf(card1 , card2 , card3 , card4)
         createCardsUI(list)
@@ -72,17 +72,17 @@ class ViewCardsFragment : Fragment() {
     {
         binding.newCardFloatingActionButton.setOnClickListener { view: View ->
             Navigation.findNavController(view)
-                .navigate(R.id.action_fragment_view_cards_to_fragment_create_card_template)
+                .navigate(ViewCardsFragmentDirections.actionFragmentViewCardsToFragmentCreateCardTemplate())
         }
     }
 
-    fun createCardsUI(cards : List<Card>)
+    private fun createCardsUI(cards : List<Card>)
     {
         //TODO Create the correct ImageView View and inflate it to the layout
         // Repeat this process for all cards in the database
         // Should be called when receiving data in the OnDataChange function of PostListener
         val layout = binding.linearlayout
-        for(i in 0 .. cards.size-1)
+        for(i in 0 until(cards.size))
         {
             val textView = TextView(context)
             val layoutParams =
@@ -99,13 +99,10 @@ class ViewCardsFragment : Fragment() {
                     //.navigate(R.id.action_fragment_view_cards_to_fragment_view_card_barcode)
             }
             layout.addView(textView)
-            textView.text = "Card number " + i
+            textView.text = cards[i].cardname
         }
     }
-
-    fun Int.toDp(): Int =(this / Resources.getSystem().displayMetrics.density).toInt()
-
-    fun Int.toPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
+    private fun Int.toPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
 
 
 }

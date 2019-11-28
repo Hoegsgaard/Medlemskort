@@ -20,9 +20,9 @@ import kotlinx.android.synthetic.main.card.*
  * A simple [Fragment] subclass.
  */
 class CreateCardInputFragment : Fragment() {
-    val brand = CreateCardInputFragmentArgs.fromBundle(arguments!!).cardname
-    val cardname = CreateCardInputFragmentArgs.fromBundle(arguments!!).brand
-    val logo = getLogoByBrand(brand)
+    private lateinit var brand : String
+    private lateinit var cardname : String
+
 
     lateinit var binding: FragmentCreateCardInputBinding
 
@@ -32,6 +32,9 @@ class CreateCardInputFragment : Fragment() {
             inflater, R.layout.fragment_create_card_input, container, false
         )
 
+        brand = CreateCardInputFragmentArgs.fromBundle(arguments!!).brand
+        cardname = CreateCardInputFragmentArgs.fromBundle(arguments!!).cardname
+        val logo = getLogoByBrand(brand)
         /*
         Create card and navigate to View Barcode Fragment
          */
@@ -77,7 +80,7 @@ class CreateCardInputFragment : Fragment() {
         cardRef.child(binding.storeNameEdittext.text.toString()).setValue(newCard)
     }
 
-    fun getLogoByBrand(brand:String): Int {
+   private  fun getLogoByBrand(brand:String): Int {
         return when (brand) {
             "Matas" -> R.drawable.matas_logo
             "Ikea" ->  R.drawable.ikea_logo

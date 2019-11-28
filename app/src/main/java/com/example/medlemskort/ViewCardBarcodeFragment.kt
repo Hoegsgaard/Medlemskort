@@ -16,7 +16,7 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.common.BitMatrix
 import com.journeyapps.barcodescanner.BarcodeEncoder
-import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_view_card_barcode.*
 import java.lang.Exception
 
 /**
@@ -25,12 +25,17 @@ import java.lang.Exception
 class ViewCardBarcodeFragment : Fragment() {
     private lateinit var medNum:String
     private lateinit var database: DatabaseReference
-    var brand = ViewCardBarcodeFragmentArgs.fromBundle(arguments!!).cardName
+    private lateinit var brand : String
+    private lateinit var cardname : String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         val binding: FragmentViewCardBarcodeBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_view_card_barcode, container, false
         )
+
+        brand = ViewCardBarcodeFragmentArgs.fromBundle(arguments!!).brandName
+        cardname = ViewCardBarcodeFragmentArgs.fromBundle(arguments!!).cardName
+
 
         binding.NotesButton.setOnClickListener { view: View ->
             Navigation.findNavController(view)
@@ -47,7 +52,7 @@ class ViewCardBarcodeFragment : Fragment() {
         } catch (e:Exception){
             Toast.makeText(requireContext(),e.message, Toast.LENGTH_LONG).show()
         }
-        binding.medlemsNummerTextView.setText(medNum)
+        binding.medlemsNummerTextView.text = medNum
 
 
         return binding.root
@@ -56,11 +61,17 @@ class ViewCardBarcodeFragment : Fragment() {
     }
 
     private fun getMedNumFromDatabase(): String {
-        database = FirebaseDatabase.getInstance().getReference("cards/" + brand + "/cardnumber")
+        database = FirebaseDatabase.getInstance().getReference("cards/${cardname}")
 
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                Log.d("cardnumer",dataSnapshot.toString())
+                Log.d("GetCurrentCardBarcode",dataSnapshot.toString())
+                val newcard = dataSnapshot.getValue(Card::class.java)
+                Log.d("CardValues" , newcard?.cardname.toString())
+                Log.d("CardValues" , newcard?.cardnumber.toString())
+                medlemsNummer_textView.text = newcard?.cardnumber.toString()
+                header_imageview.text = newcard?.cardname
+
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
