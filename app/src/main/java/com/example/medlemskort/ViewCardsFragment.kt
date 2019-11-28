@@ -11,12 +11,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.view.marginTop
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.example.medlemskort.databinding.FragmentViewCardsBinding
 import com.google.firebase.database.*
-import android.util.TypedValue
 import android.view.Gravity
 
 
@@ -96,7 +94,8 @@ class ViewCardsFragment : Fragment() {
             textView.setOnClickListener {
                     view: View ->
                 Navigation.findNavController(view)
-                    .navigate(R.id.action_fragment_view_cards_to_fragment_view_card_barcode)
+                    .navigate(ViewCardBarcodeFragmentDirections.actionFragmentViewCardBarcodeToFragmentViewCardNotes(cards[i].cardname , cards[i].brand))
+                    //.navigate(R.id.action_fragment_view_cards_to_fragment_view_card_barcode)
             }
             layout.addView(textView)
             textView.text = "Card number " + i

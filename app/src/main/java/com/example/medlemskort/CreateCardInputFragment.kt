@@ -13,12 +13,16 @@ import androidx.navigation.Navigation
 import com.example.medlemskort.databinding.FragmentCreateCardInputBinding
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.brand_card.*
+import kotlinx.android.synthetic.main.card.*
 
 
 /**
  * A simple [Fragment] subclass.
  */
 class CreateCardInputFragment : Fragment() {
+    val brand = CreateCardInputFragmentArgs.fromBundle(arguments!!).cardname
+    val cardname = CreateCardInputFragmentArgs.fromBundle(arguments!!).brand
+    val logo = getLogoByBrand(brand)
 
     lateinit var binding: FragmentCreateCardInputBinding
 
@@ -37,14 +41,11 @@ class CreateCardInputFragment : Fragment() {
         binding.addCardButton.setOnClickListener { view: View ->
             addCardToDatabase()
             Navigation.findNavController(view)
-                .navigate(CreateCardInputFragmentDirections.actionFragmentCreateCardInputToFragmentViewCardBarcode())
+                .navigate(CreateCardInputFragmentDirections.actionFragmentCreateCardInputToFragmentViewCardBarcode(cardname,brand))
         }
         binding.addCardButton.isEnabled = false
         binding.addCardButton.isClickable = false
 
-        val brand = CreateCardInputFragmentArgs.fromBundle(arguments!!).cardname
-        val cardname = CreateCardInputFragmentArgs.fromBundle(arguments!!).brand
-        val logo = getLogoByBrand(brand)
 
         binding.storeNameEdittext.setText(cardname)
         binding.headerImageview.setImageResource(logo)

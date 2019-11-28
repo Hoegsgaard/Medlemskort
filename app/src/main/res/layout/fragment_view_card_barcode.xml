@@ -63,31 +63,29 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    app:layout_constraintVertical_weight="1"
-                    app:layout_constraintBottom_toTopOf="@+id/textView"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/barcode" />
+                  android:id="@+id/barcode_imageView"
+                  android:layout_width="0dp"
+                  android:layout_height="0dp"
+                  android:paddingStart="20dp"
+                  android:paddingEnd="20dp"
+                  app:layout_constraintBottom_toTopOf="@+id/medlemsNummer_textView"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent"
+                  app:layout_constraintVertical_weight="1" />
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/medlemsNummer_textView"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:paddingTop="20dp"
-                    android:text="1234 56 7890"
                     android:textAlignment="center"
                     android:textSize="30sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintVertical_weight="0.6"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+                    app:layout_constraintTop_toBottomOf="@+id/barcode_imageView" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 

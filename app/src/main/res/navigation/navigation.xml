@@ -44,6 +44,12 @@
             app:destination="@id/fragment_view_card_notes"
             app:popUpTo="@+id/fragment_view_cards"
             app:popUpToInclusive="false" />
+        <argument
+          android:name="cardName"
+          app:argType="string" />
+        <argument
+          android:name="brandName"
+          app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragment_view_card_notes"
