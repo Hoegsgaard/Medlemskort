@@ -17,6 +17,7 @@ import androidx.navigation.Navigation
 import com.example.medlemskort.databinding.FragmentViewCardsBinding
 import com.google.firebase.database.*
 import android.view.Gravity
+import kotlinx.android.synthetic.main.brand_card.view.*
 
 
 /**
@@ -82,8 +83,46 @@ class ViewCardsFragment : Fragment() {
         }
     }
 
-    private fun createCardsUI(cards : List<Card>)
-    {
+    private fun createCardsUI(cards : List<Card>) {
+        //TODO Create the correct ImageView View and inflate it to the layout
+        // Repeat this process for all cards in the database
+        // Should be called when receiving data in the OnDataChange function of PostListener
+        val layout = binding.linearlayout
+        for(i in 0 until(cards.size)){
+            val cardView = layoutInflater.inflate(R.layout.brand_card, null, false)
+            val space = layoutInflater.inflate(R.layout.spacer,null,false)
+            val brandImg = img(cards[i].brand)
+            cardView.brandName.text = cards[i].brand
+            cardView.brandLogo.setImageResource(brandImg)
+            cardView.setOnClickListener {
+                    view: View ->
+                Log.d("hey",cards[i].cardname + " | " +cards[i].brand)
+                Navigation.findNavController(view)
+                    .navigate(ViewCardsFragmentDirections.actionFragmentViewCardsToFragmentViewCardBarcode(cards[i].cardname , cards[i].brand , cards[i].cardnumber))
+                //.navigate(R.id.action_fragment_view_cards_to_fragment_view_card_barcode)
+            }
+            layout.addView(cardView)
+            layout.addView(space)
+        }
+        binding.progressBar.visibility = View.GONE
+        binding.textViewLoading.visibility = View.GONE
+    }
+    private fun Int.toPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
+
+    private fun img(brand:String): Int {
+        return when (brand) {
+            "Matas" ->  R.drawable.matas_logo
+            "Ikea" ->  R.drawable.ikea_logo
+            "Bauhaus" ->  R.drawable.bauhaus_logo
+            "Sportmaster"->  R.drawable.sportmaster_logo
+            else ->  R.drawable.ic_settings
+        }
+    }
+}
+
+
+/*
+private fun createCardsUI(cards : List<Card>) {
         //TODO Create the correct ImageView View and inflate it to the layout
         // Repeat this process for all cards in the database
         // Should be called when receiving data in the OnDataChange function of PostListener
@@ -110,7 +149,4 @@ class ViewCardsFragment : Fragment() {
         binding.progressBar.visibility = View.GONE
         binding.textViewLoading.visibility = View.GONE
     }
-    private fun Int.toPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
-
-
-}
+*/

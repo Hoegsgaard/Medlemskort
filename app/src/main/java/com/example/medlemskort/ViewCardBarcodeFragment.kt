@@ -25,8 +25,6 @@ import java.lang.Exception
  * A simple [Fragment] subclass.
  */
 class ViewCardBarcodeFragment : Fragment() {
-    private lateinit var medNum:String
-    private lateinit var database: DatabaseReference
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         val binding: FragmentViewCardBarcodeBinding = DataBindingUtil.inflate(
@@ -54,46 +52,20 @@ class ViewCardBarcodeFragment : Fragment() {
             Navigation.findNavController(view)
                 .navigate(R.id.action_fragment_view_card_barcode_to_fragment_view_card_notes)
         }
-
-        medNum = getMedNumFromDatabase(cardname)
         try {
             val multiFormatWriter = MultiFormatWriter()
-            val bitMatrix = multiFormatWriter.encode(medNum, BarcodeFormat.CODABAR, 800, 400)
+            val bitMatrix = multiFormatWriter.encode(cardnumber.toString(), BarcodeFormat.CODABAR, 800, 400)
             val barcodeEncoder = BarcodeEncoder()
             val bitmap = barcodeEncoder.createBitmap(bitMatrix)
             binding.barcodeImageView.setImageBitmap(bitmap)
         } catch (e:Exception){
             Toast.makeText(requireContext(),e.message, Toast.LENGTH_LONG).show()
         }
-        binding.medlemsNummerTextView.text = medNum
 
 
         return binding.root
         //TODO Set the Header text to the name of the Card
         //TODO Set the Barcode image and Barcode Text to be the data from the Card chosen
-    }
-
-    private fun getMedNumFromDatabase(cardname: String): String {
-        database = FirebaseDatabase.getInstance().getReference("cards/${cardname}")
-
-        val postListener = object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                Log.d("GetCurrentCardBarcode",dataSnapshot.toString())
-                val newcard = dataSnapshot.getValue(Card::class.java)
-                Log.d("CardValues" , newcard?.cardname.toString())
-                Log.d("CardValues" , newcard?.cardnumber.toString())
-
-
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                Log.w("Failed", "loadPost:onCancelled", databaseError.toException())
-            }
-        }
-        database.addValueEventListener(postListener)
-
-
-        return "1234"
     }
 
     private fun img(brand:String): Int {
