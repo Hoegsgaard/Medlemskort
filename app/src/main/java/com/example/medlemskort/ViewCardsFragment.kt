@@ -1,6 +1,7 @@
 package com.example.medlemskort
 
 
+import android.content.res.Resources
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -10,10 +11,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.marginTop
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.example.medlemskort.databinding.FragmentViewCardsBinding
 import com.google.firebase.database.*
+import android.util.TypedValue
+import android.view.Gravity
+
 
 /**
  * A simple [Fragment] subclass.
@@ -84,8 +89,10 @@ class ViewCardsFragment : Fragment() {
             val textView = TextView(context)
             val layoutParams =
                 LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200)
+            layoutParams.setMargins(5.toPx() , 5.toPx() , 5.toPx() , 5.toPx())
             textView.layoutParams = layoutParams
-            textView.setBackgroundColor(Color.GREEN)
+            textView.setBackgroundColor(Color.LTGRAY)
+            textView.gravity = Gravity.CENTER
             textView.setOnClickListener {
                     view: View ->
                 Navigation.findNavController(view)
@@ -95,6 +102,10 @@ class ViewCardsFragment : Fragment() {
             textView.text = "Card number " + i
         }
     }
+
+    fun Int.toDp(): Int =(this / Resources.getSystem().displayMetrics.density).toInt()
+
+    fun Int.toPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
 
 
 }
