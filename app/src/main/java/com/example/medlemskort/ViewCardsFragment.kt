@@ -4,6 +4,7 @@ package com.example.medlemskort
 import android.content.res.Resources
 import android.graphics.Color
 import android.os.Bundle
+import android.transition.Visibility
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -106,6 +107,8 @@ class ViewCardsFragment : Fragment() {
             layout.addView(textView)
             textView.text = cards[i].cardname
         }
+        binding.progressBar.visibility = View.GONE
+        binding.textViewLoading.visibility = View.GONE
     }
     private fun Int.toPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
 
