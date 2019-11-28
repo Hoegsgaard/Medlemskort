@@ -94,7 +94,7 @@ class ViewCardsFragment : Fragment() {
             textView.setOnClickListener {
                     view: View ->
                 Navigation.findNavController(view)
-                    .navigate(ViewCardBarcodeFragmentDirections.actionFragmentViewCardBarcodeToFragmentViewCardNotes(cards[i].cardname , cards[i].brand))
+                    .navigate(ViewCardsFragmentDirections.actionFragmentViewCardsToFragmentViewCardBarcode(cards[i].cardname , cards[i].brand))
                     //.navigate(R.id.action_fragment_view_cards_to_fragment_view_card_barcode)
             }
             layout.addView(textView)
