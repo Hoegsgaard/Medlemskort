@@ -75,7 +75,7 @@
                 tools:ignore="Autofill"
                 android:ems="10"
                 android:hint="@string/create_card_input_cardnumber_hint"
-                android:inputType="number|textPersonName"
+                android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
