@@ -34,10 +34,10 @@ class ViewCardsFragment : Fragment() {
         generateOnClickListeners()
 
         setupDatabase()
-        val card1 = Card()
-        val card2 = Card()
-        val card3 = Card()
-        val card4 = Card()
+        val card1 = Card("Bauhaus" , brand = "Bauhaus")
+        val card2 = Card("Bauhaus" , brand = "Bauhaus")
+        val card3 = Card("Bauhaus" , brand = "Bauhaus")
+        val card4 = Card("Bauhaus" , brand = "Bauhaus")
 
         val list = listOf(card1 , card2 , card3 , card4)
         createCardsUI(list)
@@ -82,7 +82,7 @@ class ViewCardsFragment : Fragment() {
         // Repeat this process for all cards in the database
         // Should be called when receiving data in the OnDataChange function of PostListener
         val layout = binding.linearlayout
-        for(i in 0 .. cards.size)
+        for(i in 0 .. cards.size-1)
         {
             val textView = TextView(context)
             val layoutParams =
@@ -93,6 +93,7 @@ class ViewCardsFragment : Fragment() {
             textView.gravity = Gravity.CENTER
             textView.setOnClickListener {
                     view: View ->
+                Log.d("hey",cards[i].cardname + " | " +cards[i].brand)
                 Navigation.findNavController(view)
                     .navigate(ViewCardsFragmentDirections.actionFragmentViewCardsToFragmentViewCardBarcode(cards[i].cardname , cards[i].brand))
                     //.navigate(R.id.action_fragment_view_cards_to_fragment_view_card_barcode)
