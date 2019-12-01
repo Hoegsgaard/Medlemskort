@@ -15,11 +15,15 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.example.medlemskort.databinding.FragmentViewCardNotesBinding
+import kotlinx.android.synthetic.main.brand_card.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class ViewCardNotesFragment : Fragment() {
+    lateinit var brand:String
+    lateinit var cardname:String
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -27,8 +31,8 @@ class ViewCardNotesFragment : Fragment() {
             inflater, R.layout.fragment_view_card_notes, container, false
         )
 
-        val brand = ViewCardNotesFragmentArgs.fromBundle(arguments!!).brandName
-        val cardname = ViewCardNotesFragmentArgs.fromBundle(arguments!!).cardName
+        brand = ViewCardNotesFragmentArgs.fromBundle(arguments!!).brandName
+        cardname = ViewCardNotesFragmentArgs.fromBundle(arguments!!).cardName
         val cardnumber = ViewCardNotesFragmentArgs.fromBundle(arguments!!).cardNumber
 
         if(img(brand) == R.drawable.ic_settings) {
@@ -92,6 +96,6 @@ class ViewCardNotesFragment : Fragment() {
 
     fun navigateToNotes(view: View){
         Navigation.findNavController(view)
-            .navigate(R.id.action_fragment_view_card_notes_to_fragment_edit_notes)
+            .navigate(ViewCardNotesFragmentDirections.actionFragmentViewCardNotesToFragmentEditNotes(brand, cardname, ViewCardNotesFragmentArgs.fromBundle(arguments!!).cardNumber))
     }
 }
