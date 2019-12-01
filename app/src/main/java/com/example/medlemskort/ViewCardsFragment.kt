@@ -103,6 +103,7 @@ class ViewCardsFragment : Fragment() {
             }
             layout.addView(cardView)
             layout.addView(space)
+
         }
         binding.progressBar.visibility = View.GONE
         binding.textViewLoading.visibility = View.GONE
