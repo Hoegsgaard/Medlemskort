@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/fragment_login">
+    <fragment
+        android:id="@+id/fragment_login"
+        android:name="com.example.medlemskort.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_fragment_login_to_fragment_view_cards"
+            app:destination="@id/fragment_view_cards" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_view_cards"
+        android:name="com.example.medlemskort.ViewCardsFragment"
+        android:label="ViewCardsFragment"
+        tools:layout="@layout/fragment_view_cards">
+        <action
+            android:id="@+id/action_fragment_view_cards_to_fragment_create_card_template"
+            app:destination="@id/fragment_create_card_template" />
+        <action
+            android:id="@+id/action_fragment_view_cards_to_fragment_view_card_barcode"
+            app:destination="@id/fragment_view_card_barcode" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_create_card_template"
+        android:name="com.example.medlemskort.CreateCardTemplateFragment"
+        android:label="CreateCardFragment"
+        tools:layout="@layout/fragment_create_card_template">
+        <action
+          android:id="@+id/action_fragment_create_card_template_to_fragment_create_card_input"
+          app:destination="@id/fragment_create_card_input" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_view_card_barcode"
+        android:name="com.example.medlemskort.ViewCardBarcodeFragment"
+        android:label="ViewCardBarcodeFragment"
+        tools:layout="@layout/fragment_view_card_barcode">
+        <action
+            android:id="@+id/action_fragment_view_card_barcode_to_fragment_view_card_notes"
+            app:destination="@id/fragment_view_card_notes"
+            app:popUpTo="@+id/fragment_view_cards"
+            app:popUpToInclusive="false" />
+        <argument
+          android:name="cardName"
+          app:argType="string" />
+        <argument
+          android:name="brandName"
+          app:argType="string" />
+        <argument
+          android:name="cardNumber"
+          app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_view_card_notes"
+        android:name="com.example.medlemskort.ViewCardNotesFragment"
+        android:label="ViewCardNotesFragment"
+        tools:layout="@layout/fragment_view_card_notes">
+        <action
+            android:id="@+id/action_fragment_view_card_notes_to_fragment_view_card_barcode"
+            app:destination="@id/fragment_view_card_barcode"
+            app:popUpTo="@+id/fragment_view_card_barcode"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_fragment_view_card_notes_to_fragment_edit_notes"
+            app:destination="@id/fragment_edit_notes" />
+        <argument
+          android:name="brandName"
+          app:argType="string" />
+        <argument
+          android:name="cardName"
+          app:argType="string" />
+        <argument
+          android:name="cardNumber"
+          app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_edit_notes"
+        android:name="com.example.medlemskort.EditNotesFragment"
+        android:label="EditNotesFragment"
+        tools:layout="@layout/fragment_edit_notes">
+        <action
+            android:id="@+id/action_fragment_edit_notes_to_fragment_view_card_notes"
+            app:destination="@id/fragment_view_card_notes"
+            app:popUpTo="@+id/fragment_view_card_notes"
+            app:popUpToInclusive="true" />
+        <argument
+          android:name="brandName"
+          app:argType="string" />
+        <argument
+          android:name="cardName"
+          app:argType="string" />
+        <argument
+          android:name="cardNumber"
+          app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_create_card_input"
+        android:name="com.example.medlemskort.CreateCardInputFragment"
+        android:label="CreateCardInputFragment"
+        tools:layout="@layout/fragment_create_card_input">
+        <action
+            android:id="@+id/action_fragment_create_card_input_to_fragment_view_card_barcode"
+            app:destination="@id/fragment_view_card_barcode"
+            app:popUpTo="@+id/fragment_view_cards" />
+        <argument
+          android:name="cardname"
+          app:argType="string" />
+        <argument
+          android:name="brand"
+          app:argType="string" />
+    </fragment>
+</navigation>
