@@ -34,6 +34,12 @@ class ViewCardBarcodeFragment : Fragment() {
         val brand = ViewCardBarcodeFragmentArgs.fromBundle(arguments!!).brandName
         val cardname = ViewCardBarcodeFragmentArgs.fromBundle(arguments!!).cardName
         val cardnumber = ViewCardBarcodeFragmentArgs.fromBundle(arguments!!).cardNumber
+        val note = ViewCardBarcodeFragmentArgs.fromBundle(arguments!!).note
+
+        Log.d("TestValues",cardname)
+        Log.d("TestValues",brand)
+        Log.d("TestValues",cardnumber.toString())
+        Log.d("TestValues", "NOTE IS " + note)
 
 
         if(img(brand) == R.drawable.ic_settings) {
@@ -48,7 +54,7 @@ class ViewCardBarcodeFragment : Fragment() {
 
         binding.NotesButton.setOnClickListener { view: View ->
             Navigation.findNavController(view)
-                .navigate(ViewCardBarcodeFragmentDirections.actionFragmentViewCardBarcodeToFragmentViewCardNotes(brand, cardname, cardnumber))
+                .navigate(ViewCardBarcodeFragmentDirections.actionFragmentViewCardBarcodeToFragmentViewCardNotes(brand, cardname, cardnumber , note))
         }
         try {
             val multiFormatWriter = MultiFormatWriter()

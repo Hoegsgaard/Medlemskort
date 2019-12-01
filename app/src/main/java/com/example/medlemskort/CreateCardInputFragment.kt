@@ -44,7 +44,7 @@ class CreateCardInputFragment : Fragment() {
             addCardToDatabase()
             val cardnumber = card_number_edittext.text.toString().toLong()
             Navigation.findNavController(view)
-                .navigate(CreateCardInputFragmentDirections.actionFragmentCreateCardInputToFragmentViewCardBarcode(cardname , brand , cardnumber))
+                .navigate(CreateCardInputFragmentDirections.actionFragmentCreateCardInputToFragmentViewCardBarcode(cardname , brand , cardnumber , ""))
         }
         binding.addCardButton.isEnabled = false
         binding.addCardButton.isClickable = false

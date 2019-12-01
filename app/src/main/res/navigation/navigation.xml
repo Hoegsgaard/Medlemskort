@@ -53,6 +53,9 @@
         <argument
           android:name="cardNumber"
           app:argType="long" />
+        <argument
+          android:name="note"
+          app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragment_view_card_notes"
@@ -76,6 +79,9 @@
         <argument
           android:name="cardNumber"
           app:argType="long" />
+        <argument
+          android:name="note"
+          app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragment_edit_notes"
@@ -96,6 +102,9 @@
         <argument
           android:name="cardNumber"
           app:argType="long" />
+        <argument
+          android:name="note"
+          app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragment_create_card_input"

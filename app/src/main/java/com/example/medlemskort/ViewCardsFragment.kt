@@ -96,9 +96,13 @@ class ViewCardsFragment : Fragment() {
             cardView.brandLogo.setImageResource(brandImg)
             cardView.setOnClickListener {
                     view: View ->
-                Log.d("hey",cards[i].cardname + " | " +cards[i].brand)
+                Log.d("TestValues",cards[i].cardname)
+                Log.d("TestValues",cards[i].brand)
+                Log.d("TestValues",cards[i].cardnumber.toString())
+                Log.d("TestValues",cards[i].note)
+
                 Navigation.findNavController(view)
-                    .navigate(ViewCardsFragmentDirections.actionFragmentViewCardsToFragmentViewCardBarcode(cards[i].cardname , cards[i].brand , cards[i].cardnumber))
+                    .navigate(ViewCardsFragmentDirections.actionFragmentViewCardsToFragmentViewCardBarcode(cards[i].cardname , cards[i].brand , cards[i].cardnumber , cards[i].note))
                 //.navigate(R.id.action_fragment_view_cards_to_fragment_view_card_barcode)
             }
             layout.addView(cardView)

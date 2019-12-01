@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.example.medlemskort.databinding.FragmentEditNotesBinding
+import com.google.firebase.database.FirebaseDatabase
 
 /**
  * A simple [Fragment] subclass.
@@ -25,26 +26,42 @@ class EditNotesFragment : Fragment() {
         brand = EditNotesFragmentArgs.fromBundle(arguments!!).brandName
         cardname = EditNotesFragmentArgs.fromBundle(arguments!!).cardName
         val cardnumber = EditNotesFragmentArgs.fromBundle(arguments!!).cardNumber
+        val prevNotes = EditNotesFragmentArgs.fromBundle(arguments!!).note
+
+        binding.noteEdittext.setText(prevNotes)
 
         binding.cancelImageview.setOnClickListener { view: View ->
-            navigateToNotes(view)
+            Navigation.findNavController(view)
+                .navigate(EditNotesFragmentDirections.actionFragmentEditNotesToFragmentViewCardNotes(brand, cardname, cardnumber , prevNotes))
         }
         binding.cancelTextview.setOnClickListener { view: View ->
-            navigateToNotes(view)
+            Navigation.findNavController(view)
+                .navigate(EditNotesFragmentDirections.actionFragmentEditNotesToFragmentViewCardNotes(brand, cardname, cardnumber , prevNotes))
         }
         binding.acceptImageview.setOnClickListener { view: View ->
-            navigateToNotes(view)
+            val newNote = binding.noteEdittext.text.toString()
+            addCardToDatabase(newNote)
+            Navigation.findNavController(view)
+                .navigate(EditNotesFragmentDirections.actionFragmentEditNotesToFragmentViewCardNotes(brand, cardname, cardnumber , newNote))
             //TODO Update the cards notes if you click on the 'Done' button both locally and remotely (In the database)
         }
         binding.acceptTextview.setOnClickListener { view: View -> //HVAD ER DET HER DANIEL?
-            navigateToNotes(view)
+            val newNote = binding.noteEdittext.text.toString()
+            addCardToDatabase(newNote)
+            Navigation.findNavController(view)
+                .navigate(EditNotesFragmentDirections.actionFragmentEditNotesToFragmentViewCardNotes(brand, cardname, cardnumber , newNote))
             //TODO Update the cards notes if you click on the 'Done' button both locally and remotely (In the database)
         }
         return binding.root
     }
 
-    fun navigateToNotes(view: View){
-        Navigation.findNavController(view)
-            .navigate(EditNotesFragmentDirections.actionFragmentEditNotesToFragmentViewCardNotes(brand, cardname, EditNotesFragmentArgs.fromBundle(arguments!!).cardNumber))
+    private fun addCardToDatabase(newNote: String)
+    {
+        // Write a message to the database
+        //TODO First child of the new card should be a unique ID and not the name of the card
+        val database = FirebaseDatabase.getInstance()
+        val cardRef = database.getReference("cards/" + cardname + "/" + "note")
+        cardRef.setValue(newNote)
     }
+
 }

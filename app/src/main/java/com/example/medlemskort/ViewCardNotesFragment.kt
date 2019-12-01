@@ -1,21 +1,15 @@
 package com.example.medlemskort
 
 
-import android.Manifest.permission.CAMERA
-import android.Manifest.permission.READ_EXTERNAL_STORAGE
-import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.example.medlemskort.databinding.FragmentViewCardNotesBinding
-import kotlinx.android.synthetic.main.brand_card.*
 
 /**
  * A simple [Fragment] subclass.
@@ -34,6 +28,9 @@ class ViewCardNotesFragment : Fragment() {
         brand = ViewCardNotesFragmentArgs.fromBundle(arguments!!).brandName
         cardname = ViewCardNotesFragmentArgs.fromBundle(arguments!!).cardName
         val cardnumber = ViewCardNotesFragmentArgs.fromBundle(arguments!!).cardNumber
+        val note = ViewCardNotesFragmentArgs.fromBundle(arguments!!).note
+
+        binding.notesTextTextView.text = note
 
         if(img(brand) == R.drawable.ic_settings) {
             binding.headerImageview.text = cardname
@@ -45,19 +42,19 @@ class ViewCardNotesFragment : Fragment() {
 
 
         binding.buttonEditNotes.setOnClickListener { view: View ->
-            navigateToNotes(view)
+            navigateToNotes(view , note)
         }
         binding.notesTextTextView.setOnClickListener { view: View ->
-            navigateToNotes(view)
+            navigateToNotes(view , note)
         }
         binding.notesLableTextView.setOnClickListener { view: View ->
-            navigateToNotes(view)
+            navigateToNotes(view , note)
         }
 
 
         binding.buttonBarcode.setOnClickListener { view: View ->
             Navigation.findNavController(view)
-                .navigate(ViewCardNotesFragmentDirections.actionFragmentViewCardNotesToFragmentViewCardBarcode(brand, cardname, cardnumber))
+                .navigate(ViewCardNotesFragmentDirections.actionFragmentViewCardNotesToFragmentViewCardBarcode(brand, cardname, cardnumber , note))
         }
 
         binding.imageViewFront.setOnClickListener{
@@ -94,8 +91,9 @@ class ViewCardNotesFragment : Fragment() {
         }
     }
 
-    fun navigateToNotes(view: View){
+    fun navigateToNotes(view: View, notes : String){
+
         Navigation.findNavController(view)
-            .navigate(ViewCardNotesFragmentDirections.actionFragmentViewCardNotesToFragmentEditNotes(brand, cardname, ViewCardNotesFragmentArgs.fromBundle(arguments!!).cardNumber))
+            .navigate(ViewCardNotesFragmentDirections.actionFragmentViewCardNotesToFragmentEditNotes(brand, cardname, ViewCardNotesFragmentArgs.fromBundle(arguments!!).cardNumber , notes))
     }
 }

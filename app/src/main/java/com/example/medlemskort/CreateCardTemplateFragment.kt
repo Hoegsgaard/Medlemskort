@@ -20,7 +20,7 @@ class CreateCardTemplateFragment : Fragment() {
 
     lateinit var binding: FragmentCreateCardTemplateBinding
     lateinit var mainLinearLayout: LinearLayout
-    var brands = listOf("Matas", "Ikea", "Bauhaus", "Sportmaster", "Bluckbuster", "H&M", "Imerco", "Jensens Bøfhus", "Kop og kande", "Silvan")
+    var brands = listOf("Matas", "Ikea", "Bauhaus", "Sportmaster", "Blockbuster", "H&M", "Imerco", "Jensens Bøfhus", "Kop og kande", "Silvan")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -57,7 +57,7 @@ class CreateCardTemplateFragment : Fragment() {
             "Ikea" ->  R.drawable.ikea_logo
             "Bauhaus" ->  R.drawable.bauhaus_logo
             "Sportmaster"->  R.drawable.sportmaster_logo
-            "Bluckbuster" -> R.drawable.bauhaus_logo
+            "Blockbuster" -> R.drawable.blockbuster_logo
             "H&M" -> R.drawable.hogm_logo
             "Imerco" -> R.drawable.imerco_logo
             "Jensens Bøfhus" -> R.drawable.jensen_boefhus_logo
