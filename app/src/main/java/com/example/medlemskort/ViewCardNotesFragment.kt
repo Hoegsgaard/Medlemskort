@@ -27,6 +27,19 @@ class ViewCardNotesFragment : Fragment() {
             inflater, R.layout.fragment_view_card_notes, container, false
         )
 
+        val brand = ViewCardNotesFragmentArgs.fromBundle(arguments!!).brandName
+        val cardname = ViewCardNotesFragmentArgs.fromBundle(arguments!!).cardName
+        val cardnumber = ViewCardNotesFragmentArgs.fromBundle(arguments!!).cardNumber
+
+        if(img(brand) == R.drawable.ic_settings) {
+            binding.headerImageview.text = cardname
+        }
+        else {
+            binding.headerImageview.setBackgroundResource(img(brand))
+            binding.headerImageview.text = ""
+        }
+
+
         binding.buttonEditNotes.setOnClickListener { view: View ->
             navigateToNotes(view)
         }
@@ -38,10 +51,9 @@ class ViewCardNotesFragment : Fragment() {
         }
 
 
-
         binding.buttonBarcode.setOnClickListener { view: View ->
             Navigation.findNavController(view)
-                .navigate(R.id.action_fragment_view_card_notes_to_fragment_view_card_barcode)
+                .navigate(ViewCardNotesFragmentDirections.actionFragmentViewCardNotesToFragmentViewCardBarcode(brand, cardname, cardnumber))
         }
 
         binding.imageViewFront.setOnClickListener{
@@ -61,6 +73,21 @@ class ViewCardNotesFragment : Fragment() {
                 //TODO Step 2. Use the image provided by the user, upload it to the database storage and show a preview in the app
                 //TODO Step 3. If the user has a picture chosen make sure that when you click it a full scren view of the picture is shown with an option to edit or delete it
 
+    }
+    private fun img(brand:String): Int {
+        return when (brand) {
+            "Matas" ->  R.drawable.matas_logo
+            "Ikea" ->  R.drawable.ikea_logo
+            "Bauhaus" ->  R.drawable.bauhaus_logo
+            "Sportmaster"->  R.drawable.sportmaster_logo
+            "Bluckbuster" -> R.drawable.bauhaus_logo
+            "H&M" -> R.drawable.hogm_logo
+            "Imerco" -> R.drawable.imerco_logo
+            "Jensens Bøfhus" -> R.drawable.jensen_boefhus_logo
+            "Kop og kande" -> R.drawable.kop_og_kande_logo
+            "Silvan" -> R.drawable.silvan_logo
+            else ->  R.drawable.ic_settings
+        }
     }
 
     fun navigateToNotes(view: View){

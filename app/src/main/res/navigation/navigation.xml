@@ -67,6 +67,15 @@
         <action
             android:id="@+id/action_fragment_view_card_notes_to_fragment_edit_notes"
             app:destination="@id/fragment_edit_notes" />
+        <argument
+          android:name="brandName"
+          app:argType="string" />
+        <argument
+          android:name="cardName"
+          app:argType="string" />
+        <argument
+          android:name="cardNumber"
+          app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/fragment_edit_notes"

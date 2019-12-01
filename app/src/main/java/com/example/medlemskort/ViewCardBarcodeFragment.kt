@@ -36,12 +36,10 @@ class ViewCardBarcodeFragment : Fragment() {
         val cardnumber = ViewCardBarcodeFragmentArgs.fromBundle(arguments!!).cardNumber
 
 
-        if(img(brand) == R.drawable.ic_settings)
-        {
+        if(img(brand) == R.drawable.ic_settings) {
             binding.headerImageview.text = cardname
         }
-        else
-        {
+        else {
             binding.headerImageview.setBackgroundResource(img(brand))
             binding.headerImageview.text = ""
         }
@@ -50,7 +48,7 @@ class ViewCardBarcodeFragment : Fragment() {
 
         binding.NotesButton.setOnClickListener { view: View ->
             Navigation.findNavController(view)
-                .navigate(R.id.action_fragment_view_card_barcode_to_fragment_view_card_notes)
+                .navigate(ViewCardBarcodeFragmentDirections.actionFragmentViewCardBarcodeToFragmentViewCardNotes(brand, cardname, cardnumber))
         }
         try {
             val multiFormatWriter = MultiFormatWriter()
