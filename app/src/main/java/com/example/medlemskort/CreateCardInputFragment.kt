@@ -22,8 +22,8 @@ import kotlinx.android.synthetic.main.fragment_create_card_input.*
  */
 class CreateCardInputFragment : Fragment() {
 
-
     lateinit var binding: FragmentCreateCardInputBinding
+    lateinit var brand:String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -31,7 +31,7 @@ class CreateCardInputFragment : Fragment() {
             inflater, R.layout.fragment_create_card_input, container, false
         )
 
-        val brand = CreateCardInputFragmentArgs.fromBundle(arguments!!).brand
+        brand = CreateCardInputFragmentArgs.fromBundle(arguments!!).brand
         val cardname = CreateCardInputFragmentArgs.fromBundle(arguments!!).cardname
         val logo = getLogoByBrand(brand)
         /*
@@ -76,7 +76,7 @@ class CreateCardInputFragment : Fragment() {
         //TODO First child of the new card should be a unique ID and not the name of the card
         val database = FirebaseDatabase.getInstance()
         val cardRef = database.getReference("cards")
-        val newCard = Card(binding.storeNameEdittext.text.toString(), binding.cardNumberEdittext.text.toString().toLong())
+        val newCard = Card(binding.storeNameEdittext.text.toString(), binding.cardNumberEdittext.text.toString().toLong(), brand = brand)
         cardRef.child(binding.storeNameEdittext.text.toString()).setValue(newCard)
     }
 
@@ -86,6 +86,12 @@ class CreateCardInputFragment : Fragment() {
             "Ikea" ->  R.drawable.ikea_logo
             "Bauhaus" -> R.drawable.bauhaus_logo
             "Sportmaster"-> R.drawable.sportmaster_logo
+            "Bluckbuster" -> R.drawable.bauhaus_logo
+            "H&M" -> R.drawable.hogm_logo
+            "Imerco" -> R.drawable.imerco_logo
+            "Jensens Bøfhus" -> R.drawable.jensen_boefhus_logo
+            "Kop og kande" -> R.drawable.kop_og_kande_logo
+            "Silvan" -> R.drawable.silvan_logo
             else -> R.drawable.ic_settings
         }
     }
