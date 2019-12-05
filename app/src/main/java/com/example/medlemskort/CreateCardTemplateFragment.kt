@@ -53,16 +53,16 @@ class CreateCardTemplateFragment : Fragment() {
     }
     private fun img(brand:String): Int {
         return when (brand) {
-            "Matas" ->  R.drawable.matas_logo
-            "Ikea" ->  R.drawable.ikea_logo
-            "Bauhaus" ->  R.drawable.bauhaus_logo
-            "Sportmaster"->  R.drawable.sportmaster_logo
-            "Blockbuster" -> R.drawable.blockbuster_logo
-            "H&M" -> R.drawable.hogm_logo
-            "Imerco" -> R.drawable.imerco_logo
-            "Jensens Bøfhus" -> R.drawable.jensen_boefhus_logo
+            "Matas" ->  R.drawable.matas_new_logo
+            "Ikea" ->  R.drawable.ikea_new_logo
+            "Bauhaus" ->  R.drawable.bauhaus_new_logo
+            "Sportmaster"->  R.drawable.sportmaster_new_logo
+            "Blockbuster" -> R.drawable.blockbuster_new_logo
+            "H&M" -> R.drawable.hm_new_logo
+            "Imerco" -> R.drawable.imerco_new_logo
+            "Jensens Bøfhus" -> R.drawable.jensen_boefhus_new_logo
             "Kop og kande" -> R.drawable.kop_og_kande_logo
-            "Silvan" -> R.drawable.silvan_logo
+            "Silvan" -> R.drawable.silvan_new_logo
             else ->  R.drawable.ic_settings
         }
     }
