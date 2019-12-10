@@ -78,7 +78,7 @@ class ViewCardBarcodeFragment : Fragment() {
             "Ikea" ->  R.drawable.ikea_logo
             "Bauhaus" ->  R.drawable.bauhaus_logo
             "Sportmaster"->  R.drawable.sportmaster_logo
-            "Bluckbuster" -> R.drawable.bauhaus_logo
+            "Blockbuster" -> R.drawable.blockbuster_logo
             "H&M" -> R.drawable.hogm_logo
             "Imerco" -> R.drawable.imerco_logo
             "Jensens Bøfhus" -> R.drawable.jensen_boefhus_logo
