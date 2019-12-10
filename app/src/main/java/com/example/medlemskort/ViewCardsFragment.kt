@@ -56,16 +56,23 @@ class ViewCardsFragment : Fragment() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (postSnapshot in dataSnapshot.children) {
                     val newCard = postSnapshot.getValue(Card::class.java)
-                    Log.d(
+                    /*Log.d(
                         "NewCard",
                         postSnapshot.getValue(Card::class.java)?.cardname + postSnapshot.getValue(
                             Card::class.java
                         )?.cardnumber
-                    )
+                    )*/
                     list.add(newCard!!)
 
                 }
-                createCardsUI(list)
+                if (list.size < 1){
+                    Log.d("size","Tom")
+                    binding.textViewNoCards.visibility = View.VISIBLE;
+                    binding.progressBar.visibility = View.GONE
+                    binding.textViewLoading.visibility = View.GONE
+                }else{
+                    createCardsUI(list)
+                }
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
