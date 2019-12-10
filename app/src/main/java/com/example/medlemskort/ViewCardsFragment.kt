@@ -99,7 +99,7 @@ class ViewCardsFragment : Fragment() {
             val cardView = layoutInflater.inflate(R.layout.brand_card, null, false)
             val space = layoutInflater.inflate(R.layout.spacer,null,false)
             val brandImg = img(cards[i].brand)
-            cardView.brandName.text = cards[i].brand
+            cardView.brandName.text = cards[i].cardname
             cardView.brandLogo.setImageResource(brandImg)
             cardView.setOnClickListener {
                     view: View ->

@@ -30,12 +30,21 @@ class CreateCardInputFragment : Fragment() {
         )
 
         brand = CreateCardInputFragmentArgs.fromBundle(arguments!!).brand
-
+        var logo : Int = 0
         if (brand != "") {
+            logo  = getLogoByBrand(brand)
             binding.addCardIconButton.visibility = View.INVISIBLE
+
         }
-        val cardname = CreateCardInputFragmentArgs.fromBundle(arguments!!).cardname
-        val logo = getLogoByBrand(brand)
+        else
+        {
+            binding.storeNameEdittext.doOnTextChanged { text, start, count, after ->
+                binding.headerImageview.text = text
+            }
+        }
+
+        var cardname = CreateCardInputFragmentArgs.fromBundle(arguments!!).cardname
+
         /*
         Create card and navigate to View Barcode Fragment
          */
@@ -44,6 +53,7 @@ class CreateCardInputFragment : Fragment() {
         }
         binding.addCardButton.setOnClickListener { view: View ->
             addCardToDatabase()
+            cardname = binding.storeNameEdittext.text.toString()
             val cardnumber = card_number_edittext.text.toString().toLong()
             Navigation.findNavController(view)
                 .navigate(
@@ -60,7 +70,7 @@ class CreateCardInputFragment : Fragment() {
 
 
         binding.storeNameEdittext.setText(cardname)
-        binding.headerImageview.setImageResource(logo)
+        binding.headerImageview.setBackgroundResource(logo)
         binding.circleImageview.setImageResource(logo)
         binding.cardNumberEdittext.doOnTextChanged { text, start, count, after ->
             if (text!!.isNotEmpty()) {
