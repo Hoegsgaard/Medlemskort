@@ -1,6 +1,7 @@
 package com.example.medlemskort
 
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -35,6 +36,20 @@ class CreateCardTemplateFragment : Fragment() {
     }
 
     private fun addBrandCards(){
+
+        val CustomCard = layoutInflater.inflate(R.layout.brand_card, null, false)
+        val Space1 = layoutInflater.inflate(R.layout.spacer,null,false)
+        CustomCard.brandName.text = "Make your own!"
+        CustomCard.brandLogo.setImageResource(R.drawable.questionmark)
+        CustomCard.setOnClickListener{ view: View ->
+            Navigation.findNavController(view)
+                //.navigate(R.id.action_fragment_create_card_template_to_fragment_create_card_input)
+                .navigate(CreateCardTemplateFragmentDirections.actionFragmentCreateCardTemplateToFragmentCreateCardInput("" , ""))
+        }
+        mainLinearLayout.addView(CustomCard)
+        mainLinearLayout.addView(Space1)
+
+
         for (brand in brands) {
             val cardView = layoutInflater.inflate(R.layout.brand_card, null, false)
             val space = layoutInflater.inflate(R.layout.spacer,null,false)
@@ -50,6 +65,8 @@ class CreateCardTemplateFragment : Fragment() {
             mainLinearLayout.addView(cardView)
             mainLinearLayout.addView(space)
         }
+
+
     }
     private fun img(brand:String): Int {
         return when (brand) {
