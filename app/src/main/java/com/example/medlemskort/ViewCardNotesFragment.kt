@@ -2,6 +2,7 @@ package com.example.medlemskort
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,6 +31,11 @@ class ViewCardNotesFragment : Fragment() {
         val cardnumber = ViewCardNotesFragmentArgs.fromBundle(arguments!!).cardNumber
         val note = ViewCardNotesFragmentArgs.fromBundle(arguments!!).note
 
+        Log.d("Debug" , brand)
+        Log.d("Debug" , cardname)
+        Log.d("Debug" , "" + cardnumber)
+        Log.d("Debug" , note)
+
         binding.notesTextTextView.text = note
 
         if(img(brand) == R.drawable.ic_settings) {
@@ -53,8 +59,12 @@ class ViewCardNotesFragment : Fragment() {
 
 
         binding.buttonBarcode.setOnClickListener { view: View ->
+            Log.d("SentValues" , "brand" + brand)
+            Log.d("SentValues" , "cardname" + cardname)
+            Log.d("SentValues" , "cardnumber " + cardnumber)
+            Log.d("SentValues" , "note" + note)
             Navigation.findNavController(view)
-                .navigate(ViewCardNotesFragmentDirections.actionFragmentViewCardNotesToFragmentViewCardBarcode(brand, cardname, cardnumber , note))
+                .navigate(ViewCardNotesFragmentDirections.actionFragmentViewCardNotesToFragmentViewCardBarcode(cardname, brand, cardnumber, note))
         }
 
         binding.imageViewFront.setOnClickListener{

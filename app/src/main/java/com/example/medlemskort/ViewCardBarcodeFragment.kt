@@ -36,9 +36,9 @@ class ViewCardBarcodeFragment : Fragment() {
         val cardnumber = ViewCardBarcodeFragmentArgs.fromBundle(arguments!!).cardNumber
         val note = ViewCardBarcodeFragmentArgs.fromBundle(arguments!!).note
 
-        Log.d("TestValues",cardname)
-        Log.d("TestValues",brand)
-        Log.d("TestValues",cardnumber.toString())
+        Log.d("TestValues","cardname: " + cardname)
+        Log.d("TestValues","brand" + brand)
+        Log.d("TestValues","cardnumber" + cardnumber.toString())
         Log.d("TestValues", "NOTE IS " + note)
 
 
