@@ -48,7 +48,7 @@ class CreateCardInputFragment : Fragment() {
         /*
         Create card and navigate to View Barcode Fragment
          */
-        binding.scanImageView.setOnClickListener {
+        binding.addCardIconButton.setOnClickListener {
             Toast.makeText(requireContext(), "Funktion under udvikling", Toast.LENGTH_LONG).show()
         }
         binding.addCardButton.setOnClickListener { view: View ->
