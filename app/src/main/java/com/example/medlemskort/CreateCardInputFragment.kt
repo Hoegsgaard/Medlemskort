@@ -101,17 +101,17 @@ class CreateCardInputFragment : Fragment() {
 
     private fun getLogoByBrand(brand: String): Int {
         return when (brand) {
-            "Matas" -> R.drawable.matas_logo
-            "Ikea" ->  R.drawable.ikea_logo
-            "Bauhaus" -> R.drawable.bauhaus_logo
-            "Sportmaster"-> R.drawable.sportmaster_logo
-            "Blockbuster" -> R.drawable.blockbuster_logo
-            "H&M" -> R.drawable.hogm_logo
-            "Imerco" -> R.drawable.imerco_logo
+            "Matas" ->  R.drawable.matas_logo_medium
+            "Ikea" ->  R.drawable.ikea_logo_medium
+            "Bauhaus" ->  R.drawable.bauhaus_logo_medium
+            "Sportmaster"->  R.drawable.sportmaster_logo
+            "Blockbuster" -> R.drawable.blockbuster_logo_medium
+            "H&M" -> R.drawable.hogm_logo_medium
+            "Imerco" -> R.drawable.imerco_logo_medium
             "Jensens Bøfhus" -> R.drawable.jensen_boefhus_logo
             "Kop og kande" -> R.drawable.kop_og_kande_logo
             "Silvan" -> R.drawable.silvan_logo
-            else -> R.drawable.ic_settings
+            else ->  R.drawable.ic_settings
         }
     }
 
